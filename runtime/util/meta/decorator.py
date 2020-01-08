@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Any, Callable, Iterable, Dict
+from typing import Any, Callable
 
 __author__ = "Bilal El Uneis"
 __since__ = "Jan 2020"
@@ -21,7 +21,7 @@ def frozen(cls: Any) -> Any:
 
     def init_decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(func)
-        def wrapper(self: Any, *args: Iterable[Any], **kwargs: Dict[Any, Any]) -> None:
+        def wrapper(self: Any, *args: Any, **kwargs: Any) -> None:
             func(self, *args, **kwargs)
             self.__frozen = True
 
